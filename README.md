@@ -23,3 +23,7 @@ $ sudo cmake ..
 $ sudo make 
 $ sudo make install
 ```
+or in one line
+```
+$ sudo git clone https://github.com/JulianWww/JCE && sudo mkdir JCE/build && cd JCE/build && sudo cmake .. && sudo make && sudo make install
+```
