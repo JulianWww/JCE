@@ -69,8 +69,9 @@ namespace jce {
         // direct access to the underlying array
         public: constexpr T* data() noexcept;
         public: constexpr const T* data() const noexcept;
-        // return the underlying vector
+        // return the underlying vector !!wanding!! changing the buffer can break the search Tree
         public: constexpr const Buffer_t& getBuffer() const noexcept;
+        public: constexpr Buffer_t& getBuffer() noexcept;
         // checks if a certain element in in the container
         public: constexpr bool contains(const T& value) const;
 
@@ -134,6 +135,7 @@ template <typename T> inline constexpr typename jce::BinarySearchTree<T>::const_
 template <typename T> inline constexpr T*       jce::BinarySearchTree<T>::data()       noexcept {return this->buffer.data();}
 template <typename T> inline constexpr const T* jce::BinarySearchTree<T>::data() const noexcept {return this->buffer.data();}
 template <typename T> inline constexpr const typename jce::BinarySearchTree<T>::Buffer_t& jce::BinarySearchTree<T>::getBuffer() const noexcept { return this->buffer; }
+template <typename T> inline constexpr       typename jce::BinarySearchTree<T>::Buffer_t& jce::BinarySearchTree<T>::getBuffer()       noexcept { return this->buffer; }
 template <typename T> inline constexpr bool     jce::BinarySearchTree<T>::contains(const T& value) const {
     if (empty()) { return false; }
     const_iterator pos = getPos(value);
