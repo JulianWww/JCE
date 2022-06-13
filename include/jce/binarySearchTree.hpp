@@ -69,7 +69,7 @@ namespace jce {
         // direct access to the underlying array
         public: constexpr T* data() noexcept;
         public: constexpr const T* data() const noexcept;
-        // return the underlying vector !!wanding!! changing the buffer can break the search Tree
+        // return the underlying vector !!warning!! changing the buffer can break the search Tree
         public: constexpr const Buffer_t& getBuffer() const noexcept;
         public: constexpr Buffer_t& getBuffer() noexcept;
         // checks if a certain element in in the container
@@ -83,8 +83,8 @@ namespace jce {
         // swaps the contents
         public: constexpr void swap( BinarySearchTree<T>& other ) noexcept;
         public: constexpr void swap( Buffer_t& other) noexcept;
-        // removes an element from the search Tree
-        public: constexpr void remove(const T& value);
+        // removes an element from the search Tree. returns contains(value); bofor removal
+        public: constexpr bool remove(const T& value);
 
         // get position of certain value in Tree
         private: constexpr const_iterator getPos(const T& element) const;
@@ -158,9 +158,12 @@ template <typename T> inline constexpr typename jce::BinarySearchTree<T>::iterat
 }
 template <typename T> inline constexpr void jce::BinarySearchTree<T>::swap(jce::BinarySearchTree<T>& other) noexcept { this->swap(other.buffer); }
 template <typename T> inline constexpr void jce::BinarySearchTree<T>::swap(Buffer_t& other) noexcept { this->buffer.swap(other); }
-template <typename T> inline constexpr void jce::BinarySearchTree<T>::remove(const T& value) {
+template <typename T> inline constexpr bool jce::BinarySearchTree<T>::remove(const T& value) {
     const_iterator front = this->getPos(value);
     const_iterator back = front;
+    if (*front != value) {
+        return false;
+    }
     while (*front == value && front >= this->begin()) {
         front--;
     }
@@ -168,6 +171,7 @@ template <typename T> inline constexpr void jce::BinarySearchTree<T>::remove(con
         back++;
     }
     this->buffer.erase(front+1, back);
+    return true;
 }
 
 // Privates
