@@ -37,3 +37,4 @@ install(DIRECTORY include/jce DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(EXPORT jceConfig DESTINATION share/${PROJECT_NAME}/cmake)
 
 add_subdirectory(test)
+add_subdirectory(optimization)
