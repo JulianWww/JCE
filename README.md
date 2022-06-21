@@ -4,6 +4,13 @@ jce is a collection of c++ objects and functions I use in other project it curre
   - BinarySearchTree
   - Namespace consoleUtils:
     - render progress bar
+  - Namespace sort
+    - Radix Sort
+    - Quck Sort
+    - Merge Sort
+    - Heap Sort
+    - Insersion Sort
+    - jSort (determines wich of the other sort algorythems is fastest)
 
 
 ## Instalation
