@@ -1,7 +1,7 @@
 #include <iostream>
-#include <jce/sort/sorts.hpp>
+#include <jce/bigint.hpp>
 
-template<typename T>
+/*template<typename T>
 bool isSorted(const std::vector<T>& vec) {
   T max = vec.front();
   for (auto const& value: vec){
@@ -20,17 +20,12 @@ std::vector<size_t> rndVec(const size_t& size) {
     }
     return vec;
 }
-
+*/
 
 
 int main(int argc, char **argv) {
-  size_t size = 1;
-  for (size_t idx=0; idx < 30; idx++) {
-    auto vec = rndVec(size);
-    jce::sort::mergeSort(vec);
-    std::cout << idx << " " << isSorted(vec) << std::endl;
-
-    size = size << 1;
-  }
+  Dodecahedron::Bigint a(999999999999999);
+  Dodecahedron::Bigint b(1000000000000000);
+  std::cout << a << std::endl;
   return 1;
 }
