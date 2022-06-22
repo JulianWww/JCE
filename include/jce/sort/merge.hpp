@@ -6,9 +6,9 @@ namespace jce {
     namespace sort {
         
         template <typename T, typename Hash=std::hash<T>>
-        std::vector<T> mergeSort(std::vector<T>& vec);
+        void mergeSort(std::vector<T>& vec);
 
-        namespace merge {
+        namespace _merge {
             template <typename T, typename Hash>
             void split(T* arrA, T* arrB, const size_t& iBegin, const size_t& iEnd);
 
@@ -22,16 +22,15 @@ namespace jce {
 }
 
 template <typename T, typename Hash>
-inline std::vector<T> jce::sort::mergeSort(std::vector<T>& vec) {
+inline void jce::sort::mergeSort(std::vector<T>& vec) {
     T* arrA = vec.data();
     T* arrB = new T[vec.size()];
-    merge::copyArray(arrA, arrB, 0, vec.size());
-    merge::split<T, Hash>(arrA, arrB, (size_t)0, vec.size());
-    return std::vector<T>(arrB, arrB + vec.size());
+    _merge::copyArray(arrA, arrB, 0, vec.size());
+    _merge::split<T, Hash>(arrB, arrA, (size_t)0, vec.size());
 }
 
 template <typename T, typename Hash>
-inline void jce::sort::merge::split(T* arrA, T* arrB, const size_t& iBegin, const size_t& iEnd) {
+inline void jce::sort::_merge::split(T* arrA, T* arrB, const size_t& iBegin, const size_t& iEnd) {
     if (iEnd - iBegin <= 1)
         return;
     size_t iMiddle = (iEnd + iBegin) / 2;
@@ -42,7 +41,7 @@ inline void jce::sort::merge::split(T* arrA, T* arrB, const size_t& iBegin, cons
 }
 
 template <typename T, typename Hash>
-inline void jce::sort::merge::merge(T* arrA, T* arrB, const size_t& iBegin, const size_t& iMiddle, const size_t& iEnd) {
+inline void jce::sort::_merge::merge(T* arrA, T* arrB, const size_t& iBegin, const size_t& iMiddle, const size_t& iEnd) {
     size_t i = iBegin;
     size_t j = iMiddle;
 
@@ -59,7 +58,7 @@ inline void jce::sort::merge::merge(T* arrA, T* arrB, const size_t& iBegin, cons
 }
 
 template <typename T>
-inline void jce::sort::merge::copyArray(T* from, T* to, const size_t& iBegin, const size_t& iEnd) {
+inline void jce::sort::_merge::copyArray(T* from, T* to, const size_t& iBegin, const size_t& iEnd) {
     for (size_t idx=iBegin; idx < iEnd; idx++)
         to[idx] = from[idx];
 }

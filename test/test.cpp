@@ -13,10 +13,24 @@ bool isSorted(const std::vector<T>& vec) {
   return true;
 }
 
+std::vector<size_t> rndVec(const size_t& size) {
+    std::vector<size_t> vec(size);
+    for (auto& element : vec) {
+        element = std::rand();
+    }
+    return vec;
+}
+
 
 
 int main(int argc, char **argv) {
-  std::vector<size_t> vec = {2,1,4,9,0};
-  jce::sort::insersion(vec);
+  size_t size = 1;
+  for (size_t idx=0; idx < 30; idx++) {
+    auto vec = rndVec(size);
+    jce::sort::mergeSort(vec);
+    std::cout << idx << " " << isSorted(vec) << std::endl;
+
+    size = size << 1;
+  }
   return 1;
 }

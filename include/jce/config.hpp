@@ -1,0 +1,4 @@
+#pragma once
+
+#define SORT_SQUARELOG_HANDOF 32
+#define SORT_LOGLIN_HANDOF 256

@@ -6,6 +6,9 @@
 namespace optim {
     void optimizeSort();
 
+    size_t getFirstShift(); // insersion to merge sort shift point
+    size_t getSecondShift(size_t size); // merge to radix sort shift point
+
     std::vector<size_t> rndVec(const size_t& size);
 
     template <typename Func>
