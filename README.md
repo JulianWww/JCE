@@ -4,6 +4,13 @@ jce is a collection of c++ objects and functions I use in other project it curre
   - BinarySearchTree
   - Namespace consoleUtils:
     - render progress bar
+  - Namespace sort
+    - Radix Sort
+    - Quck Sort
+    - Merge Sort
+    - Heap Sort
+    - Insersion Sort
+    - jSort (determines wich of the other sort algorythems is fastest)
 
 
 ## Instalation
@@ -13,15 +20,6 @@ $ mkdir JCE/build && cd JCE/build
 $ cmake ..
 $ make 
 $ make install
-```
-or with sudo (only use if necesary)
-
-```
-$ sudo git clone https://github.com/JulianWww/JCE
-$ sudo mkdir JCE/build && cd JCE/build
-$ sudo cmake ..
-$ sudo make 
-$ sudo make install
 ```
 or in one line
 ```
