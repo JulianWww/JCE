@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(jce VERSION 1.0.1 LANGUAGES CXX)
+project(jce VERSION 1.0.2 LANGUAGES CXX)
 
 set(DEFAULT_BUILD_TYPE "Release")
 
